@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% load humanize %}
+{% load humanize %}
+
+
+{% block content %}
+<div class="col-lg-12 col-md-10">
+			<table class="basic-table ">
+				<!-- QUESTION -->
+				<tr >
+				    <td><form method="post" action="{% url 'vote' %}">
+            {% csrf_token %}
+            <input type="hidden" id="id_question" name="question" class="hidden_id" value="{{ question.pk }}" />
+            <input type="hidden" id="id_voter" name="voter" class="hidden_id" value="{{ user.pk }}" />
+            <button><div class="circle"> {{ question.votes }} </div></button>
+            </form></td>
+				    <td class="qtn-detail" style="width:100%">
+				    <h2>{{ question.title }} </h2>
+				    <p>
+				{{ question.detail }}
+				</p>
+				<p><span class="pull-right">  by 
+        <a href="{% url 'user_public_profile' question.submitter %}">{{question.submitter}}</a>, 
+        {{ question.date_added | naturaltime }}</span></p>
+                <br />
+                {% for tag in question.tags.all %}
+            <a href="{% url 'tag_details' tag%}"><span class="label label-info"> {{tag}} </span> &nbsp;</a>
+        {% endfor %}
+				    </td>
+				</tr>
+				
+				
+				</table>
+				
+				<!-- ANSWER -->
+				 <a class="btn btn-danger btn-lg pull-right" href="{% url 'qna_answer' question.id%}">Submit an answer</a>
+				<h3> {{ question.answer_set.count }} Answers </h3> 
+				<hr>
+				
+				<table class="basic-table " >
+				{% for answer in answer_list %}
+				<tr >
+				    <td><form method="post" action="{% url 'vote' %}">
+            {% csrf_token %}
+            <input type="hidden" id="id_answer" name="answer" class="hidden_id" value="{{ answer.pk }}" />
+            <input type="hidden" id="id_voter" name="voter" class="hidden_id" value="{{ user.pk }}" />
+            <button><div class="circle"> {{ answer.votes }} </div></button>
+            </form></td>
+				    <td style="width:100%"><p>  {{ answer.detail }} </p>
+				    <p><span class="pull-right ">  <a href="{% url 'user_public_profile' answer.answerer %}"> {{ answer.answerer }} </a>, {{ answer.date_added | naturaltime }}</span></p>
+                    </td>
+                    </tr>
+                {% endfor %}
+				</table>
+				
+				
+			</div>
+			
+{% endblock %}

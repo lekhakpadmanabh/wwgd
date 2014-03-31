@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+
+{% block content%}
+<ul class="list-group">
+
+{% for question in question_list%}
+<li class="list-group-item"> ({{question.votes}}) {{question.title}} </li>
+{% endfor %}
+</ul>
+{% endblock %}

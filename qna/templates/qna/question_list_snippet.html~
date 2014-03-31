@@ -1,0 +1,7 @@
+<h3 class="panel-header">{{ header }}</h3>
+
+<div class="list-group">
+    {% for question in question_list%}
+    <a class="list-group-item" href={{ question.id }}> {{ question.title }}</a>
+    {% endfor %}
+</div>

@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% block logo %}
+<div class="jumbotron">
+    <div class="container">
+    <img src="{% static 'logo.png' %}" class="img-responsive img-rounded center-block">
+    </div>
+</div>
+{% endblock%}
+
+{% block content%}
+	<div class="container  ">
+	<div class="row">
+<div class="input-group  col-lg-6 col-lg-offset-3 col-md-8 col-md-offset-2" >
+{% if user_form.errors %}
+<p class="text-warning"> Errors {{ user_form.errors}} </p>
+{% endif%}
+
+{% if registered %}
+        <strong>Thank you for registering!</strong>
+        <a href="{% url 'qna_login' %}"> You can now log in.</a><br />
+        {% else %}
+        
+
+        <form id="user_form" method="post" action="/people/signup/"
+                enctype="multipart/form-data">
+
+            {% csrf_token %}
+
+        <div class="input-group center-div" style="width:400px;padding:7px;">
+            <span class="input-group-addon" style="background-color:#b77b48; color:white"><span class="glyphicon glyphicon-user"></span></span>
+            {{ user_form.username }}
+        </div>
+        <div class="input-group center-div" style="width:400px;padding:7px;">
+            <span class="input-group-addon" style="background-color:#b77b48; color:white"><span class="glyphicon glyphicon-envelope"></span></span>
+            {{ user_form.email }}
+        </div>
+        <div class="input-group center-div" style="width:400px;padding:7px;">
+            <span class="input-group-addon" style="background-color:#b77b48; color:white"><span class="glyphicon glyphicon-lock"></span></span>
+            {{ user_form.password }}
+        </div>
+            
+
+
+            <!-- Provide a button to click to submit the form. -->
+            <input type="submit" name="submit" value="Register" class="btn btn-lg" style="background-color: #b77b48; color:white; margin:10px" />
+        </form>
+        {% endif %}
+</div>
+</div>
+</div>
+{% endblock %}

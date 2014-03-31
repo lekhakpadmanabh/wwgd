@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+{% block logo %}
+<div class="jumbotron">
+    <div class="container">
+    <img src="{% static 'logo.png' %}" class="img-responsive img-rounded center-block">
+    </div>
+</div>
+{% endblock%}
+
+
+{% block content%}
+	<div class="container center-div ">
+	<div class="row">
+<div class="input-group center-div col-lg-6 col-lg-offset-3 " >
+
+{% if form.errors %}
+<p class="text-warning"> Your username and/or password didn't match </p>
+{% endif%}
+
+<form method="post" action="{% url 'django.contrib.auth.views.login' %}">
+{% csrf_token %}
+
+        <div class="input-group center-div" style="width:400px;padding:7px;">
+            <span class="input-group-addon" style="background-color:#b77b48; color:white"><span class="glyphicon glyphicon-user"></span></span>
+            <input type="text" class="form-control" placeholder="Username" id="{{ form.username.id_for_label }}" maxlength="30" name="{{ form.username.html_name }}" />
+
+        </div>
+        <div class="input-group center-div" style="width:400px;padding:7px;">
+            <span class="input-group-addon" style="background-color:#b77b48; color:white"><span class="glyphicon glyphicon-lock"></span></span>
+            <input type="password" class="form-control" placeholder="Password" id="{{ form.password.id_for_label }}" name="{{ form.password.html_name }}" type="text" />
+        </div>
+
+
+<input class="btn btn-lg" type="submit" value="login" style="background-color: #b77b48; color:white; margin:10px"/>
+<input type="hidden" name="next" value="{{ next }}" />
+</form>
+</div>
+</div>
+</div>
+{% endblock %}

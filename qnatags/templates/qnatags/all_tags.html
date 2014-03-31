@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% load taggit_extras %}
+
+{% block content%}
+<ul class="list-group">
+{% get_taglist as tags for 'qna' %}
+
+{% for tag in tags%}
+<li class="list-group-item"> {{tag}} ({{ tag.num_times }}) </li>
+{% endfor %}
+</ul>
+{% endblock %}

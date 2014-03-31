@@ -1,0 +1,79 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% load taggit_extras %}
+{% load humanize %}
+
+{% block logo %}
+<div class="jumbotron">
+    <div class="container">
+    <img src="{% static 'logo.png' %}" class="img-responsive img-rounded center-block">
+    </div>
+</div>
+{% endblock%}
+
+{% block content %}
+<div class="col-lg-10 col-md-12 col-sm-12" >
+    <table class=" well basic-table">
+    {% for question in object_list %}
+    <tr>
+        <td><form method="post" action="{% url 'vote' %}">
+            {% csrf_token %}
+            <input type="hidden" id="id_question" name="question" class="hidden_id" value="{{ question.pk }}" />
+            <input type="hidden" id="id_voter" name="voter" class="hidden_id" value="{{ user.pk }}" />
+            <button><div class="circle"> {{ question.votes }} </div></button>
+            </form></td>
+        <td class="qtn" style="width:100%">
+        <h4><a href="{% url 'qna_detail' question.id %}" class="qtn-title"> {{ question.title }} 
+        <span class="badge badge-warning pull-right">{{ question.answer_set.count}} Answers</span></a></h4> 
+        {% for tag in question.tags.all %}
+            <a href="{% url 'tag_details' tag%}"><span class="label label-info"> {{tag}} </span> &nbsp;</a>
+        {% endfor %}
+        <span class="pull-right mic-info">  by 
+        <a href="{% url 'user_public_profile' question.submitter %}">{{question.submitter}}</a>, 
+        {{ question.date_added | naturaltime }}</span>
+        </td>
+    </tr>
+    {% endfor %}
+    </table>
+    {% if is_paginated %}
+<div class="pagination">
+    {% if page_obj.has_next %}
+    <a class="btn btn-danger" href="?page={{ page_obj.next_page_number }}">More &raquo;</a>
+    {% endif %}
+</div>
+{% endif %}
+
+    </div>
+    
+			<div class="col-lg-2 col-md-12 col-sm-12" >
+			
+			    
+			    <h5 id="brown-text"><b>Stats </b></h5>
+			    <div class="list-group">
+			        
+			        <a class="list-group-item" style="color:#b77b48;">
+			        <span class="glyphicon glyphicon-question-sign" ></span> Questions 
+			        <span class="badge badge-warning">{{ total_qtns }}</span>
+			        </a>
+			        
+			        <a class="list-group-item" style="color:#b77b48;">
+			        <span class="glyphicon glyphicon-comment"></span> Answers 
+			        <span class="badge badge-info">{{ total_ans }}</span>
+			        </a>
+			        
+			        <a class="list-group-item" style="color:#b77b48;">
+			        <span class="glyphicon glyphicon-user"></span> Users 
+			        <span class="badge badge-success">{{ total_users }}</span>
+			        </a>
+			    </div>
+			<h5 id="brown-text"><b>Popular Tags </b></h5>
+			 <ul class="list-group">
+			        {% get_taglist as tags for 'qna' %}
+                    {% for tag in tags%}
+                    <a href="{% url 'tag_details' tag%}" class="list-group-item" style="color:#b77b48;"> {{tag}} ({{ tag.num_times }}) </a>
+                    {% endfor %}
+                   
+                </ul>
+			
+			</div>
+{% endblock %}

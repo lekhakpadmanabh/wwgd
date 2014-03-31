@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>{{ user.username }}'s Profile</h2>
+
+<div class="well col-md-6">
+    {% include 'qna/question_list_snippet.html' with header="{{ user.username }}'s Questions" question_list=my_questions %}
+    {% include 'qna/answer_list_snippet.html' with header="{{ user.username }}'s Answers" answer_list=my_answers %}
+</div>
+
+{% endblock%}

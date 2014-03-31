@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% load humanize %}
+{% block content %}
+<ul class="list-group">
+{% for question in object_list %}
+    <li class="list-group-item"> 
+        <table class="basic-table">
+        <tr >
+            <td>
+            <form method="post" action="{% url 'vote' %}">
+            {% csrf_token %}
+            <input type="hidden" id="id_question" name="question" class="hidden_id" value="{{ question.pk }}" />
+            <input type="hidden" id="id_voter" name="voter" class="hidden_id" value="{{ user.pk }}" />
+            <button class="btn btn-warning" >{{ question.votes }}</button> &nbsp;
+            </form>
+            </td>
+            <td>
+                <tr>
+                    <td style="width:100%">
+                    <a href={{ question.id }} > {{ question.title }} </a>
+                    </td>
+                    <td> <p class="pull-right"> 1 Answer</p> </td>
+                </tr>
+                <tr>
+                    <td>{% for tag in question.tags.all %} <span class="label label-info"> {{tag}}  </span> &nbsp; {% endfor %}</td>
+                    <td> <p class="pull-right mic-info"> by {{question.submitter}}, {{ question.date_added | naturaltime }}</p></td>
+                </tr>
+            </td>
+        </tr>
+        </li>
+{% endfor %}
+</ul>
+{% endblock %}

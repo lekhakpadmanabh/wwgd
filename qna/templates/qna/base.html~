@@ -1,0 +1,13 @@
+<html>
+<head>
+<title> What Would Gandhi Do? </title>
+</head>
+
+<body>
+<h1> WWGD? </h1>
+{% block content %}
+{% endblock %}
+</body>
+
+
+</html>

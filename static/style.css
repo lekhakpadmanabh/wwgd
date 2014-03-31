@@ -1,0 +1,385 @@
+body {
+    /*color:#663300;*/
+    /*background:url('') repeat left top;*/
+    /*background-color:#F4F0CB;*/
+    
+}
+
+
+
+button {
+    border:0;
+    outline: 0;
+    background:none;
+}
+
+/*
+.list-group-item {
+    color:#fff;
+    background-color:#b77b48;
+    border-color:#F4F0CB;
+}
+
+.list-group-item:hover,
+.list-group-item:focus  {
+    background-color:#f4a460;
+    border-color:#F4F0CB;
+}
+
+a.list-group-item:hover,
+a.list-group-item:focus  {
+    background-color:#f4a460;
+    border-color:#F4F0CB;
+    }
+*/
+.well{
+    background-color:white;
+    border-radius:8px;
+    border-color:white;
+    /*border-color:#F4F0CB;*/
+    margin-top: 10px;
+    padding-top:0px;
+    
+}
+
+
+
+/*
+.btn{
+    background-color:white;
+    border-color:white;
+}
+.btn:hover{
+    background-color:white;
+    border-color:white;
+}
+.btn:active{
+    background-color:white;
+    border-color:white;
+}*/
+
+.container-white{
+/*background-color:white;*/
+padding-top:15px;
+border-radius:10px;
+padding-bottom:15px;
+margin-bottom:25px;
+
+}
+
+td {
+    padding: 15px;
+    margin-bottom: 5px;
+    margin-left:0px;
+    margin-right: 0px;
+}
+
+td.qtn {
+
+    padding: 15px;
+    margin-bottom: 5px;
+    margin-left:0px;
+    margin-right: 0px;
+    border-right: 3px solid ;
+    /*border-right-color:#F4F0CB;*/
+    border-right-color:white;
+
+    }
+
+
+td.qtn:hover {
+    /*background: #fafafa;*/
+    border-right: 3px solid ;
+    border-right-color: #f4a460;
+    }/**/
+
+ul.article-list {
+    list-style: none;
+    }
+
+.mic-info {
+    color: #666666;
+    font-size: 11px;
+}
+
+.logo-style {
+    color: #7B4A12;
+}
+
+@font-face {
+  font-family: 'VisionMKG';
+  src: url('VisionMKG.ttf');
+}
+
+
+.gandhi-font {
+    font-family:'VisionMKG';
+    
+}
+
+.gandhi-font-bold {
+    font-family:'VisionMKG';
+    font-weight: bold;
+}
+
+
+.jumbotron{
+    /*background-color:#ff3600;*/
+    /*background-color: #f4a460;*/
+    /*background-color:#F4F0CB;*/
+    background-color:white;
+    color:black;
+    margin-bottom:0px;
+    
+}
+
+.navbar{
+    margin-bottom:0px;
+}
+
+#brown-text a {
+    color:#926239;
+}
+
+#brown-text{
+    color:#926239;
+}
+
+.qtn-title{
+    font-family: Helvetica;
+    color:#926239;
+    font-size:19px;
+}
+
+a:link {text-decoration:none;}
+a:visited {text-decoration:none;}
+a:hover {text-decoration:none;}
+a:active {text-decoration:none;}
+
+
+/* Footer from http://stackoverflow.com/questions/10099422/flushing-footer-to-bottom-of-the-page-twitter-bootstrap */
+
+html,
+body {
+  height: 100%;
+  /* The html and body elements cannot have any padding or margin. */
+}
+
+/* Wrapper for page content to push down footer */
+#wrap {
+  min-height: 100%;
+  height: auto;
+  /* Negative indent footer by its height */
+  margin: 0 auto -180px;
+  /* Pad bottom by footer height */
+  padding: 0 0 180px;
+}
+
+/* Set the fixed height of the footer here */
+#footer {
+  height: 180px;
+  background-color: #f5f5f5;
+}
+
+/* Thanks to http://stackoverflow.com/questions/16615403/css-how-to-draw-circle-with-text-in-middle */
+.circle
+{
+width:50px;
+height:50px;
+border-radius:25px;
+font-size:22px;
+color:#fff;
+line-height:50px;
+text-align:center;
+background:#db9356;
+}
+
+.circle:hover{
+    cursor:pointer;
+    /*background:#db9356;*/
+    -webkit-box-shadow: 2px 2px 5px 0px rgba(247, 191, 143, 1);
+    -moz-box-shadow: 2px 2px 5px 0px rgba(247, 191, 143, 1);
+    box-shadow: 2px 2px 5px 0px rgba(247, 191, 143, 1);
+}
+
+.circle-detail
+{
+width:60px;
+height:60px;
+border-radius:30px;
+font-size:22px;
+color:#fff;
+line-height:60px;
+text-align:center;
+background:#db9356;
+}
+
+.circle-detail:hover{
+    cursor:pointer;
+    /*background:#db9356;*/
+    -webkit-box-shadow: 2px 2px 5px 0px rgba(247, 191, 143, 1);
+    -moz-box-shadow: 2px 2px 5px 0px rgba(247, 191, 143, 1);
+    box-shadow: 2px 2px 5px 0px rgba(247, 191, 143, 1);
+}
+
+/* Change Bootstrap input focus blue glow */
+
+textarea:focus, input[type="text"]:focus, input[type="password"]:focus, input[type="datetime"]:focus, input[type="datetime-local"]:focus, input[type="date"]:focus, input[type="month"]:focus, input[type="time"]:focus, input[type="week"]:focus, input[type="number"]:focus, input[type="email"]:focus, input[type="url"]:focus, input[type="search"]:focus, input[type="tel"]:focus, input[type="color"]:focus, .uneditable-input:focus {   
+border-color: #f4a460;
+box-shadow: 0 1px 1px #fafafa inset, 0 0 2px #fafafa;
+outline: 0 none;}
+
+
+/* Custom navbar generated via-- http://twitterbootstrap3navbars.w3masters.nl/*/
+
+.navbar-custom {
+  background-color: #b77b48;
+  border-color: #9f6b3f;
+}
+.navbar-custom .navbar-brand {
+  color: #ffffff;
+}
+.navbar-custom .navbar-brand:hover,
+.navbar-custom .navbar-brand:focus {
+  color: #e6e6e6;
+  background-color: transparent;
+}
+.navbar-custom .navbar-text {
+  color: #ffffff;
+}
+.navbar-custom .navbar-nav > li > a {
+  color: #ffffff;
+}
+.navbar-custom .navbar-nav > li > a:hover,
+.navbar-custom .navbar-nav > li > a:focus {
+  color: #ffffff;
+  background-color: transparent;
+}
+.navbar-custom .navbar-nav > .active > a,
+.navbar-custom .navbar-nav > .active > a:hover,
+.navbar-custom .navbar-nav > .active > a:focus {
+  color: #ffffff;
+  background-color: #9f6b3f;
+}
+.navbar-custom .navbar-nav > .disabled > a,
+.navbar-custom .navbar-nav > .disabled > a:hover,
+.navbar-custom .navbar-nav > .disabled > a:focus {
+  color: #cccccc;
+  background-color: transparent;
+}
+.navbar-custom .navbar-toggle {
+  border-color: #dddddd;
+}
+.navbar-custom .navbar-toggle:hover,
+.navbar-custom .navbar-toggle:focus {
+  background-color: #dddddd;
+}
+.navbar-custom .navbar-toggle .icon-bar {
+  background-color: #cccccc;
+}
+.navbar-custom .navbar-collapse,
+.navbar-custom .navbar-form {
+  border-color: #9d6a3e;
+}
+.navbar-custom .navbar-nav > .dropdown > a:hover .caret,
+.navbar-custom .navbar-nav > .dropdown > a:focus .caret {
+  border-top-color: #ffffff;
+  border-bottom-color: #ffffff;
+}
+.navbar-custom .navbar-nav > .open > a,
+.navbar-custom .navbar-nav > .open > a:hover,
+.navbar-custom .navbar-nav > .open > a:focus {
+  background-color: #9f6b3f;
+  color: #ffffff;
+}
+.navbar-custom .navbar-nav > .open > a .caret,
+.navbar-custom .navbar-nav > .open > a:hover .caret,
+.navbar-custom .navbar-nav > .open > a:focus .caret {
+  border-top-color: #ffffff;
+  border-bottom-color: #ffffff;
+}
+.navbar-custom .navbar-nav > .dropdown > a .caret {
+  border-top-color: #ffffff;
+  border-bottom-color: #ffffff;
+}
+@media (max-width: 767) {
+  .navbar-custom .navbar-nav .open .dropdown-menu > li > a {
+    color: #ffffff;
+  }
+  .navbar-custom .navbar-nav .open .dropdown-menu > li > a:hover,
+  .navbar-custom .navbar-nav .open .dropdown-menu > li > a:focus {
+    color: #ffffff;
+    background-color: transparent;
+  }
+  .navbar-custom .navbar-nav .open .dropdown-menu > .active > a,
+  .navbar-custom .navbar-nav .open .dropdown-menu > .active > a:hover,
+  .navbar-custom .navbar-nav .open .dropdown-menu > .active > a:focus {
+    color: #ffffff;
+    background-color: #9f6b3f;
+  }
+  .navbar-custom .navbar-nav .open .dropdown-menu > .disabled > a,
+  .navbar-custom .navbar-nav .open .dropdown-menu > .disabled > a:hover,
+  .navbar-custom .navbar-nav .open .dropdown-menu > .disabled > a:focus {
+    color: #cccccc;
+    background-color: transparent;
+  }
+}
+.navbar-custom .navbar-link {
+  color: #ffffff;
+}
+.navbar-custom .navbar-link:hover {
+  color: #ffffff;
+}
+
+
+/* badge-styles http://stackoverflow.com/questions/18730116/twitter-bootstrap-3-0-how-do-i-badge-badge-important-now*/
+
+.badge {
+  padding: 1px 9px 2px;
+  font-size: 12.025px;
+  font-weight: bold;
+  white-space: nowrap;
+  color: #ffffff;
+  background-color: #999999;
+  -webkit-border-radius: 9px;
+  -moz-border-radius: 9px;
+  border-radius: 9px;
+}
+.badge:hover {
+  color: #ffffff;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.badge-error {
+  background-color: #b94a48;
+}
+.badge-error:hover {
+  background-color: #953b39;
+}
+.badge-warning {
+  background-color: #f89406;
+}
+.badge-warning:hover {
+  background-color: #c67605;
+}
+.badge-success {
+  background-color: #468847;
+}
+.badge-success:hover {
+  background-color: #356635;
+}
+.badge-info {
+  background-color: #3a87ad;
+}
+.badge-info:hover {
+  background-color: #2d6987;
+}
+.badge-inverse {
+  background-color: #333333;
+}
+.badge-inverse:hover {
+  background-color: #1a1a1a;
+}
+
+
