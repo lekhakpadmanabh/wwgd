@@ -2,6 +2,7 @@
 
 <div class="list-group">
     {% for answer in answer_list %}
-    <a class="list-group-item" href=#> {{ answer.detail }}</a>
+    <a class="list-group-item" href="{% url 'qna_detail' answer.question.id %}"> <h4 class"list-grou-item-heading"> {{ answer.question }} </h4>
+    <p class="list-group-item-text">{{ answer.detail }}</p></a>
     {% endfor %}
 </div>

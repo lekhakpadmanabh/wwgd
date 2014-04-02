@@ -5,7 +5,7 @@
 <ul class="list-group">
 
 {% for question in question_list%}
-<li class="list-group-item"> {{tag}} ({{ tag.num_times }}) </li>
+<li class="list-group-item"> <a href="{% url 'qna_detail' question.id %}">({{question.votes}}) {{question.title}} </a></li>
 {% endfor %}
 </ul>
 {% endblock %}

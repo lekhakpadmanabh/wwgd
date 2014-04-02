@@ -5,7 +5,7 @@
 
 
 {% block content %}
-<div class="col-lg-12 col-md-10">
+<div class="col-lg-10 col-lg-offset-1">
 			<table class="basic-table ">
 				<!-- QUESTION -->
 				<tr >
@@ -25,8 +25,13 @@
         {{ question.date_added | naturaltime }}</span></p>
                 <br />
                 {% for tag in question.tags.all %}
-            <a href="{% url 'tag_details' tag%}"><span class="label label-info"> {{tag}} </span> &nbsp;</a>
-        {% endfor %}
+            <a href="{% url 'tag_details' tag%}"><span class="label label-danger"> {{tag}} </span> &nbsp;</a>
+                {% endfor %}
+                <p class="mic-info">Acknowledged by: 
+                {% for vote in vote_list %} 
+                    <a href="{%url 'user_public_profile' vote.voter%}">{{ vote.voter }}, </a>
+                {%endfor%} 
+                </p>
 				    </td>
 				</tr>
 				

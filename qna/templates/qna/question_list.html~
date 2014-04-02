@@ -24,15 +24,18 @@
             </form></td>
         <td class="qtn" style="width:100%">
         <h4><a href="{% url 'qna_detail' question.id %}" class="qtn-title"> {{ question.title }} 
-        <span class="badge badge-warning pull-right">{{ question.answer_set.count}} Answers</span></a></h4> 
+        <span class="badge badge-warning pull-right" style="background-color: #5bc0de">{{ question.answer_set.count}} Answers</span></a></h4> 
         {% for tag in question.tags.all %}
-            <a href="{% url 'tag_details' tag%}"><span class="label label-info"> {{tag}} </span> &nbsp;</a>
+            <a href="{% url 'tag_details' tag%}"><span class="label label-danger"> {{tag}} </span> &nbsp;</a>
         {% endfor %}
         <span class="pull-right mic-info">  by 
         <a href="{% url 'user_public_profile' question.submitter %}">{{question.submitter}}</a>, 
         {{ question.date_added | naturaltime }}</span>
+        <hr>
         </td>
+        
     </tr>
+    
     {% endfor %}
     </table>
     {% if is_paginated %}
@@ -66,11 +69,12 @@
 			        <span class="badge badge-success">{{ total_users }}</span>
 			        </a>
 			    </div>
-			<h5 id="brown-text"><b>Popular Tags </b></h5>
+			<h5 id="brown-text"><b>Popular Tags </b> (<a href="{% url 'all_tags_home' %}">All</a>)</h5>
 			 <ul class="list-group">
 			        {% get_taglist as tags for 'qna' %}
-                    {% for tag in tags%}
-                    <a href="{% url 'tag_details' tag%}" class="list-group-item" style="color:#b77b48;"> {{tag}} ({{ tag.num_times }}) </a>
+                    {% for tag in tags|slice:":5"%}
+                    <a href="{% url 'tag_details' tag%}" class="list-group-item" style="color:#b77b48;">
+                    <span class="glyphicon glyphicon-tags" ></span> &nbsp; {{tag}} ({{ tag.num_times }}) </a>
                     {% endfor %}
                    
                 </ul>

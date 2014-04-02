@@ -1,7 +1,29 @@
 <h3 class="panel-header">{{ header }}</h3>
 
-<div class="list-group">
-    {% for question in question_list%}
-    <a class="list-group-item" href={{ question.id }}> {{ question.title }}</a>
+<table class=" well basic-table">
+    {% for question in question_list %}
+    <tr>
+        <td><form method="post" action="{% url 'vote' %}">
+            {% csrf_token %}
+            <input type="hidden" id="id_question" name="question" class="hidden_id" value="{{ question.pk }}" />
+            <input type="hidden" id="id_voter" name="voter" class="hidden_id" value="{{ user.pk }}" />
+            <button title="acknowledge this question!"><div class="circle"> {{ question.votes }} </div></button>
+            </form></td>
+        <td class="qtn" style="width:100%">
+        <h4><a href="{% url 'qna_detail' question.id %}" class="qtn-title"> {{ question.title }} 
+        <span class="badge badge-warning pull-right" style="background-color: #5bc0de">{{ question.answer_set.count}} Answers</span></a></h4> 
+        {% for tag in question.tags.all %}
+            <a href="{% url 'tag_details' tag%}"><span class="label label-danger"> {{tag}} </span> &nbsp;</a>
+        {% endfor %}
+        <span class="pull-right mic-info">  by 
+        <a href="{% url 'user_public_profile' question.submitter %}">{{question.submitter}}</a>, 
+        {{ question.date_added | naturaltime }}</span>
+        <hr>
+        </td>
+        
+    </tr>
+    
     {% endfor %}
+    </table>
+
 </div>

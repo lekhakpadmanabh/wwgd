@@ -2,11 +2,17 @@
 {% load taggit_extras %}
 
 {% block content%}
+<div class="row">
+<div class="col-md-6 col-md-offset-3">
+<h2> Tags </h2>
 <ul class="list-group">
 {% get_taglist as tags for 'qna' %}
 
 {% for tag in tags%}
-<li class="list-group-item"> {{tag}} ({{ tag.num_times }}) </li>
+<a href="{% url 'tag_details' tag%}" class="list-group-item" style="color:#b77b48;">
+<span class="glyphicon glyphicon-tags" ></span> &nbsp; {{tag}} ({{ tag.num_times }}) </a>
 {% endfor %}
 </ul>
+</div>
+</div>
 {% endblock %}

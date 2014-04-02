@@ -1,7 +1,8 @@
 <h3 class="panel-header">{{ header }}</h3>
 
 <div class="list-group">
-    {% for answer in answer_list%}
-    <a class="list-group-item" href={{ question.id }}> {{ qna.title }}</a>
+    {% for answer in answer_list %}
+    <a class="list-group-item" href=#> <h4 class"list-grou-item-heading"> {{ answer.question }} </h4>
+    <p class="list-group-item-text">{{ answer.detail }}</p></a>
     {% endfor %}
 </div>

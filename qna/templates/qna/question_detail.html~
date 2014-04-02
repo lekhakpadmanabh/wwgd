@@ -5,7 +5,7 @@
 
 
 {% block content %}
-<div class="col-lg-12 col-md-10">
+<div class="col-lg-8 col-lg-offset-2">
 			<table class="basic-table ">
 				<!-- QUESTION -->
 				<tr >
@@ -25,8 +25,13 @@
         {{ question.date_added | naturaltime }}</span></p>
                 <br />
                 {% for tag in question.tags.all %}
-            <a href="{% url 'tag_details' tag%}"><span class="label label-info"> {{tag}} </span> &nbsp;</a>
-        {% endfor %}
+            <a href="{% url 'tag_details' tag%}"><span class="label label-danger"> {{tag}} </span> &nbsp;</a>
+                {% endfor %}
+                <p class="mic-info">Acknowledged by: 
+                {% for vote in vote_list %} 
+                    <a href="{%url 'user_public_profile' vote.voter%}">{{ vote.voter }}, </a>
+                {%endfor%} 
+                </p>
 				    </td>
 				</tr>
 				
@@ -41,7 +46,7 @@
 				<table class="basic-table " >
 				{% for answer in answer_list %}
 				<tr >
-				    <td><form method="post" action="{% url 'vote' %}">
+				    <td><form method="post" action="{% url 'answervote' %}">
             {% csrf_token %}
             <input type="hidden" id="id_answer" name="answer" class="hidden_id" value="{{ answer.pk }}" />
             <input type="hidden" id="id_voter" name="voter" class="hidden_id" value="{{ user.pk }}" />

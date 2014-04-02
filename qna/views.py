@@ -89,8 +89,10 @@ class QuestionListView(ListView):
 def question_detail(request,pk):
     question = Question.objects.get(pk=pk)
     answer_list = question.answer_set.all()
+    vote_list = Vote.objects.filter(question=pk)
     context = {'question':question,
-               'answer_list':answer_list}
+               'answer_list':answer_list,
+               'vote_list':vote_list}
     return render(request,'qna/question_detail.html',context)
 
 """class QuestionDetailView(DetailView):
