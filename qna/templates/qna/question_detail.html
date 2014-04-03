@@ -18,7 +18,7 @@
 				    <td class="qtn-detail" style="width:100%">
 				    <h2>{{ question.title }} </h2>
 				    <p>
-				{{ question.detail }}
+				{{ question.detail | safe}}
 				</p>
 				<p><span class="pull-right">  by 
         <a href="{% url 'user_public_profile' question.submitter %}">{{question.submitter}}</a>, 
@@ -52,7 +52,7 @@
             <input type="hidden" id="id_voter" name="voter" class="hidden_id" value="{{ user.pk }}" />
             <button><div class="circle"> {{ answer.votes }} </div></button>
             </form></td>
-				    <td style="width:100%"><p>  {{ answer.detail }} </p>
+				    <td style="width:100%"><p>  {{ answer.detail | safe }} </p>
 				    <p><span class="pull-right ">  <a href="{% url 'user_public_profile' answer.answerer %}"> {{ answer.answerer }} </a>, {{ answer.date_added | naturaltime }}</span></p>
 				    <p class="mic-info"> Acknowledged by 
 				    {% for answervote in answer.answervote_set.all %} 
