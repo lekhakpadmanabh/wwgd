@@ -54,6 +54,10 @@
             </form></td>
 				    <td style="width:100%"><p>  {{ answer.detail }} </p>
 				    <p><span class="pull-right ">  <a href="{% url 'user_public_profile' answer.answerer %}"> {{ answer.answerer }} </a>, {{ answer.date_added | naturaltime }}</span></p>
+				    <p class="mic-info"> Acknowledged by 
+				    {% for answervote in answer.answervote_set.all %} 
+                    <a href="{%url 'user_public_profile' answervote.voter%}">{{ answervote.voter }}, </a>
+                {%endfor%}</p>
                     </td>
                     </tr>
                 {% endfor %}
