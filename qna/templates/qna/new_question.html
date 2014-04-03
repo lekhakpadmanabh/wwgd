@@ -1,16 +1,17 @@
 {% extends 'base.html' %}
-{% load crispy_forms_tags %}
 {% block content %}
 
 {% if form.errors %}
 <p class="text-warning"> All fields are required </p>
 {% endif%}
-<div class="well col-md-6">
+<div class="well col-md-12">
 <p> Ask a question.. </p>
-<form action="" method="post">
+<form role="form" action="" method="post">
+<div class="form-group">
 {%csrf_token%}
-{{ form | crispy }}
-<button type="submit">Submit!</button>
+{{ form }}
+<button type="submit" class="btn btn-lg pull-right" style="background-color: #b77b48; color:white; margin:10px">Submit!</button>
+</div>
 </form>
 </div>
 {% endblock %}
