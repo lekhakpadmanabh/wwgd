@@ -2,7 +2,7 @@ from django import forms
 from .models import  Question, Answer, Vote, AnswerVote
 from django_summernote.widgets import SummernoteWidget, SummernoteInplaceWidget
 
-class QuestionForm(ModelForm):
+class QuestionForm(forms.ModelForm):
     detail = forms.CharField(widget = SummernoteWidget())
     class Meta:
         model = Question
@@ -13,15 +13,15 @@ class QuestionForm(ModelForm):
         self.fields['tags'].widget.attrs.update({'class':'form-control','placeholder':'Enter one or more tags as csv(required)'})
 
 
-class AnswerForm(ModelForm):
+class AnswerForm(forms.ModelForm):
     class Meta:
         model = Answer
         exclude = ('answerer','question')
 
-class VoteForm(ModelForm):
+class VoteForm(forms.ModelForm):
     class Meta:
         model = Vote
 
-class AnswerVoteForm(ModelForm):
+class AnswerVoteForm(forms.ModelForm):
     class Meta:
         model = AnswerVote

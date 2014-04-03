@@ -14,6 +14,7 @@ class QuestionForm(forms.ModelForm):
 
 
 class AnswerForm(forms.ModelForm):
+    detail = forms.CharField(widget=SummernoteWidget())
     class Meta:
         model = Answer
         exclude = ('answerer','question')
