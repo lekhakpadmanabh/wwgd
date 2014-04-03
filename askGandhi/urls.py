@@ -20,6 +20,7 @@ urlpatterns = patterns('',
     url(r'^answervote$',login_required(AnswerVoteFormView.as_view()),name='answervote'),
     url(r'^people/',include('profiles.urls')),
     url(r'^tags/',include('qnatags.urls')),
+    url(r'^summernote/', include('django_summernote.urls')),
 )
 
 urlpatterns += patterns(
