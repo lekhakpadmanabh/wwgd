@@ -1,3 +1,6 @@
+![Logo](https://github.com/lekhakpadmanabh/wwgd/blob/master/askGandhi/static/logo.png)
+
+
 What Would Gandhi Do?
 =====================
 
@@ -22,6 +25,6 @@ What Would Gandhi Do?
 
 ### Ambitious Plans for future
 
-1. Argument mapping system to eliminate flimsy and casual answer
+1. Argument mapping system to eliminate flimsy and casual answers
 2. A new kind of voting system and gamification
 3. For each question, identify most related text from Gandhi's corpus of publicly available works.
