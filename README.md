@@ -1,12 +1,9 @@
 ![Logo](https://raw.githubusercontent.com/lekhakpadmanabh/wwgd/master/askGandhi/static/logo.png)
 
-What Would Gandhi Do?
-=====================
-
-## To Do
+## To Do 
 
 ### Backend
-1. permalinks to answers
+1. Permalinks to answers
 2. Page viewcount
 3. Subscriptions and notifications
 4. Related questions
@@ -27,3 +24,8 @@ What Would Gandhi Do?
 1. Argument mapping system to eliminate flimsy and casual answers
 2. A new kind of voting system and gamification
 3. For each question, identify most related text from Gandhi's corpus of publicly available works.
+
+### Credits
+
+* Logo Font from the folks at http://www.gandhijifont.com/
+
