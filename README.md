@@ -1,5 +1,4 @@
-![Logo](https://github.com/lekhakpadmanabh/wwgd/blob/master/askGandhi/static/logo.png)
-
+![Logo](https://raw.githubusercontent.com/lekhakpadmanabh/wwgd/master/askGandhi/static/logo.png)
 
 What Would Gandhi Do?
 =====================
