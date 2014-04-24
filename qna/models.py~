@@ -57,6 +57,7 @@ class Answer(models.Model):
     question = models.ForeignKey(Question)
     answerer = models.ForeignKey(User)
     detail = models.TextField()
+    date_added = models.DateTimeField(auto_now_add = True)
     objects = AnswerManager()
     
     def __unicode__(self):
@@ -69,3 +70,9 @@ class AnswerVote(models.Model):
     def __unicode__(self):
         return "%s voted for an answer by %s for the question: %s" % (self.voter.username,self.answer.answerer,self.answer.question)
 
+
+
+class AnswerComment(models.Model):
+    commenter = models.ForeignKey(User)
+    text = models.CharField(max_length=1040)
+    answer = models.ForeignKey(Answer)

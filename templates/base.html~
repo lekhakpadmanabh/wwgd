@@ -21,7 +21,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a href="/" class="navbar-brand"><span class="gandhi-font-bold" style="font-size:large;">What Would Gandhi Do?</span></a>
+                <a href="/" class="navbar-brand"><span class="gandhi-font-bold" > WWGD</span></a>
             </div>
         <!-- Collection of nav links and other content for toggling -->
             <div id="navbarCollapse" class="collapse navbar-collapse">
@@ -77,8 +77,8 @@
     <div class="col-lg-6">
     <h4 class="text-center">Find us at</h4> 
     <p style="text-align: center;"><i class="fa fa-github fa-3x"title="Coming Soon!" ></i> &nbsp;
-    <i class="fa fa-twitter fa-3x"></i> &nbsp;
-    <i class="fa fa-youtube fa-3x"></i>
+    <i class="fa fa-twitter fa-3x" title="Coming Soon!"></i> &nbsp;
+    <i class="fa fa-youtube fa-3x" title="Coming Soon!"></i>
     </p>
     
     </div>

@@ -6,62 +6,90 @@
 
 {% block content %}
 <div class="col-lg-10 col-lg-offset-1">
-			<table class="basic-table ">
-				<!-- QUESTION -->
-				<tr >
-				    <td><form method="post" action="{% url 'vote' %}">
+<table class="basic-table ">
+	<!-- QUESTION -->
+	<tr style="margin-bottom:0px;padding-bottom:0px">
+		<h1>{{ question.title }} </h1> <hr>
+	</tr>
+	<tr>
+	    <td style="vertical-align:top;">
+	        <form method="post" action="{% url 'vote' %}">
             {% csrf_token %}
             <input type="hidden" id="id_question" name="question" class="hidden_id" value="{{ question.pk }}" />
             <input type="hidden" id="id_voter" name="voter" class="hidden_id" value="{{ user.pk }}" />
-            <button><div class="circle"> {{ question.votes }} </div></button>
-            </form></td>
-				    <td class="qtn-detail" style="width:100%">
-				    <h2>{{ question.title }} </h2>
-				    <p>
-				{{ question.detail | safe}}
-				</p>
-				<p><span class="pull-right">  by 
-        <a href="{% url 'user_public_profile' question.submitter %}">{{question.submitter}}</a>, 
-        {{ question.date_added | naturaltime }}</span></p>
-                <br />
-                {% for tag in question.tags.all %}
-            <a href="{% url 'tag_details' tag%}"><span class="label label-danger"> {{tag}} </span> &nbsp;</a>
-                {% endfor %}
-                <p class="mic-info">Acknowledged by: 
-                {% for vote in vote_list %} 
-                    <a href="{%url 'user_public_profile' vote.voter%}">{{ vote.voter }}, </a>
-                {%endfor%} 
-                </p>
-				    </td>
-				</tr>
-				
-				
-				</table>
-				
-				<!-- ANSWER -->
-				 <a class="btn btn-danger btn-lg pull-right" href="{% url 'qna_answer' question.id%}">Submit an answer</a>
-				<h3> {{ question.answer_set.count }} Answers </h3> 
-				<hr>
-				
-				<table class="basic-table " >
-				{% for answer in answer_list %}
-				<tr >
-				    <td><form method="post" action="{% url 'answervote' %}">
+            <button><div class="circle-small"> {{ question.votes }} </div></button>
+            </form>
+        </td>
+
+	    <td class="qtn-detail" style="width:100%;margin-top:0px;padding-top:0px;">
+	        <p>{{ question.detail | safe}}</p>
+		    <div class="pull-right" style="padding:4px;margin:2px;"> <p> by 
+            <a href="{% url 'user_public_profile' question.submitter %}">{{question.submitter}}</a></p> 
+            <p>{{ question.date_added | naturaltime }}</p></div>
+            <p>
+            {% for tag in question.tags.all %}
+                <a href="{% url 'tag_details' tag%}"><span class="label label-danger"> {{tag}} </span> &nbsp;</a>
+            {% endfor %}
+            </p>
+            <p class="mic-info">Acknowledged by: 
+            {% for vote in vote_list %} 
+                <a href="{%url 'user_public_profile' vote.voter%}">{{ vote.voter }}, </a>
+            {%endfor%} 
+            </p>
+	    </td>
+	</tr>
+</table>
+
+<!-- ANSWER -->
+
+<a class="btn btn-danger btn-lg pull-right" href="{% url 'qna_answer' question.id%}">Submit an answer</a>
+<h3> {{ question.answer_set.count }} Answers </h3> 
+<hr>
+
+
+{% for answer in answer_list %}
+<table class="basic-table " >
+    <tr>
+        <td style="vertical-align:top;">
+            <form method="post" action="{% url 'answervote' %}">
             {% csrf_token %}
             <input type="hidden" id="id_answer" name="answer" class="hidden_id" value="{{ answer.pk }}" />
             <input type="hidden" id="id_voter" name="voter" class="hidden_id" value="{{ user.pk }}" />
-            <button><div class="circle"> {{ answer.votes }} </div></button>
-            </form></td>
-				    <td style="width:100%"><p>  {{ answer.detail | safe }} </p>
-				    <p><span class="pull-right ">  <a href="{% url 'user_public_profile' answer.answerer %}"> {{ answer.answerer }} </a>, {{ answer.date_added | naturaltime }}</span></p>
-				    <p class="mic-info"> Acknowledged by 
-				    {% for answervote in answer.answervote_set.all %} 
-                    <a href="{%url 'user_public_profile' answervote.voter%}">{{ answervote.voter }}, </a>
-                {%endfor%}</p>
-                    </td>
-                    </tr>
-                {% endfor %}
-				</table>
+            <button><div class="circle-small"> {{ answer.votes }} </div></button>
+            </form>
+        </td>
+        
+	    <td style="width:100%;margin-top:0px;padding-top:0px;">
+		    <p> {{ answer.detail | safe }} </p>
+		    <div class="pull-right" style="padding:4px;margin:6px;"> <p> by 
+        	<a href="{% url 'user_public_profile' answer.answerer %}">{{answer.answerer}}</a></p> 
+        	<p>{{ answer.date_added | naturaltime }}</p>
+        	</div>
+        	<p class="mic-info"> Acknowledged by 
+			    {% for answervote in answer.answervote_set.all %} 
+                <a href="{%url 'user_public_profile' answervote.voter%}">{{ answervote.voter }}, </a>
+                {%endfor%}
+        	</p>
+    	</td>
+    </tr>
+
+
+    <tr>
+        <table class="table " style="margin-left:100px;">
+
+           {% for comment in answer.answercomment_set.all %}
+            <tr>
+                <td style="border-top:none;margin-top:0px;padding-top:0px;margin-bottom:0px;padding-bottom:0px;">
+                    <p style="font-size:11px;">{{ comment }} - <a href="{%url 'user_public_profile' comment.commenter %}">{{comment.commenter}} </a></p>
+                </td>
+             </tr>
+            {% endfor %}
+        </table>
+     </tr>
+</table>
+<hr>
+{% endfor %}
+
 				
 				
 			</div>

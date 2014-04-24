@@ -70,3 +70,11 @@ class AnswerVote(models.Model):
     def __unicode__(self):
         return "%s voted for an answer by %s for the question: %s" % (self.voter.username,self.answer.answerer,self.answer.question)
 
+
+
+class AnswerComment(models.Model):
+    commenter = models.ForeignKey(User)
+    text = models.CharField(max_length=1040)
+    answer = models.ForeignKey(Answer)
+    def __unicode__(self):
+        return self.text

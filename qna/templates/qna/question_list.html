@@ -4,33 +4,50 @@
 {% load humanize %}
 
 {% block logo %}
-<div class="jumbotron">
+<div class="jumbotron" style="margin-bottom:0px;padding-bottom:0px;" >
     <div class="container">
-    <img src="{% static 'logo.png' %}" class="img-responsive img-rounded center-block">
+    <img src="{% static 'logo.png' %}" class="img-responsive img-rounded center-block" style="margin-bottom:0px;padding-bottom:0px">
     </div>
 </div>
 {% endblock%}
 
 {% block content %}
+
+<ul class="top-links text-center">
+
+    <li class="top-link"><a href='#' class="tl">NEW</a> 
+    </li>
+    <li class="top-link"><a href='#' class="tl">POPULAR</a> 
+    </li>
+    <li class="top-link"><a href='#' class="tl">TAGS</a> 
+    </li>
+</ul>
+
+<!--<hr style="background-color: #db9356;height: 3.5px; margin:0px">-->
 <div class="col-lg-10 col-md-12 col-sm-12" >
-    <table class=" well basic-table">
+    <table class=" table " style="width:100%; margin-top:20px;">
+    
     {% for question in object_list %}
     <tr>
-        <td><form method="post" action="{% url 'vote' %}">
+        <td style="width:10px;border-top: none; vertical-align:middle;"><form method="post" action="{% url 'vote' %}">
             {% csrf_token %}
             <input type="hidden" id="id_question" name="question" class="hidden_id" value="{{ question.pk }}" />
             <input type="hidden" id="id_voter" name="voter" class="hidden_id" value="{{ user.pk }}" />
-            <button title="acknowledge this question!"><div class="circle"> {{ question.votes }} </div></button>
+            <button><div class="circle-small"> {{ question.votes }} </div></button>
             </form></td>
-        <td class="qtn" style="width:100%">
-        <h4><a href="{% url 'qna_detail' question.id %}" class="qtn-title"> {{ question.title }} 
-        <span class="badge badge-warning pull-right" style="background-color: #5bc0de">{{ question.answer_set.count}} Answers</span></a></h4> 
-        {% for tag in question.tags.all %}
-            <a href="{% url 'tag_details' tag%}"><span class="label label-danger"> {{tag}} </span> &nbsp;</a>
-        {% endfor %}
-        <span class="pull-right mic-info">  by 
+       
+        <td class="qtn" style="border-top: none; ">
+        <h4><a href="{% url 'qna_detail' question.id %}" class="qtn-title" style="margin-top:0px;padding-top:0px;"> {{ question.title }} 
+        </a></h4>
+        
+        <div class="mic-info">  by 
         <a href="{% url 'user_public_profile' question.submitter %}">{{question.submitter}}</a>, 
-        {{ question.date_added | naturaltime }}</span>
+        {{ question.date_added | naturaltime }}</div>
+
+        <span class="label label-danger ">{{ question.answer_set.count}} Answers</span> 
+        {% for tag in question.tags.all %}
+            <a href="{% url 'tag_details' tag%}"><span class="label label-brown"> {{tag}} </span> &nbsp;</a>
+        {% endfor %}
         
         </td>
         
@@ -51,7 +68,7 @@
 			<div class="col-lg-2 col-md-12 col-sm-12" >
 			
 			    
-			    <h5 id="brown-text"><b>Stats </b></h5>
+			    <h5 id="brown-text" style="margin-top:25px"><b>Stats </b></h5>
 			    <div class="list-group">
 			        
 			        <a class="list-group-item" style="color:#b77b48;">
