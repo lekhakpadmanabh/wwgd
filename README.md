@@ -1,5 +1,7 @@
 ![Logo](https://raw.githubusercontent.com/lekhakpadmanabh/wwgd/master/askGandhi/static/logo.png)
 
+[Link](http://askgandhi.herokuapp.com)
+
 ## To Do 
 
 ### Backend
@@ -12,17 +14,9 @@
 7. Editable question/answer
 8. Comments
 
-### Frontend
-
-1. Media Queries for a decent mobile version
-2. Ajax voting
-3. About Page
-4. Better typography and layout for detail views
-
 ### Ambitious Plans for future
 
 1. Argument mapping system to eliminate flimsy and casual answers
-2. A new kind of voting system and gamification
 3. For each question, identify most related text from Gandhi's corpus of publicly available works.
 
 ### Credits
